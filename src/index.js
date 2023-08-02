@@ -1,9 +1,12 @@
 const express = require('express');
-
 const { ServerConfig } = require('./config');
 const apiRoutes = require('./routes');
 
 const app = express();
+
+//This is used to get JSON or URLEncoded body from Request for all type of req
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 app.use('/api', apiRoutes);
 

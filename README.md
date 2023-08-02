@@ -46,3 +46,14 @@ Lets take a look inside the `src` folder
  ```
  npm run dev
  ```
+
+ Default export
+module.exports = function defaultExportedFunction() {};
+While Required you can call it with any name;
+
+Named export
+module.exports = {
+  something,
+  anotherThing,
+};
+While Required you have to call it with specified name;
