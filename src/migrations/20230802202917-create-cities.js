@@ -27,16 +27,3 @@ module.exports = {
     await queryInterface.dropTable('Cities');
   }
 };
-
-
-// await queryInterface.addConstraint('Airports',{
-//   type:'FOREIGN KEY',
-//   name:'city_fkey_constraint',
-//   fields:['cityId'],
-//   references:{
-//     table:'Cities',
-//     field:'id'
-//   },
-//   onUpdate:'CASCADE',
-//   onDelete:'CASCADE'
-// })
