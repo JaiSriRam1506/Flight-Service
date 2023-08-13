@@ -100,6 +100,22 @@ function validateCreateRequest(req,res,next){
 
 }
 
+function validateUpdateSeatRequest(req,res,next){
+
+    if(!req.body.seats){
+        ErrorResponse.message="Something wrong while Updating Seat request"
+        ErrorResponse.error=new AppError(['Seat Number is not in proper format'],StatusCodes.BAD_REQUEST);
+
+    return res
+              .status(StatusCodes.BAD_REQUEST)
+              .json(ErrorResponse)
+
+    }
+    next();
+
+}
+
 module.exports={
-    validateCreateRequest
+    validateCreateRequest,
+    validateUpdateSeatRequest
 }

@@ -35,7 +35,7 @@ async function getAirplane(id){
         return airplane;
     } catch (error) {
         if(error.statusCode===StatusCodes.NOT_FOUND){
-            throw new AppError('Flight Not Found',StatusCodes.NOT_FOUND);
+            throw new AppError('Airplane Not Found',StatusCodes.NOT_FOUND);
         }
         throw new AppError('Cannot get Airplane object', StatusCodes.INTERNAL_SERVER_ERROR);
     }  
@@ -47,7 +47,7 @@ async function destroy(id){
         return airplane;
     } catch (error) {
         if(error.statusCode===StatusCodes.NOT_FOUND){
-            throw new AppError('Flight Not Found',StatusCodes.NOT_FOUND);
+            throw new AppError('Airplane Not Found',StatusCodes.NOT_FOUND);
         }
         throw new AppError('Cannot get Airplane object', StatusCodes.INTERNAL_SERVER_ERROR);
     }

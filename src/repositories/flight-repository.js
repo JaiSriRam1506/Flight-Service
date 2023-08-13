@@ -5,6 +5,10 @@ const AppError=require('../utils/error/app-error')
 const { Flight,Airplane,Cities,Airports }=require('../models')
 const {Sequelize}=require('sequelize')
 
+const {addRowLockOnFlights}=require('./queries');
+
+const db=require('../models')
+
 class FlightRepository extends CrudRepository{
     constructor(){
         super(Flight);
@@ -53,6 +57,19 @@ class FlightRepository extends CrudRepository{
             throw new AppError("",StatusCodes.NOT_FOUND)
         }
         return response;
+    }
+
+    async updateRemainingSeat(flightId,seats,type='dec'){
+        await db.sequelize.query(addRowLockOnFlights(flightId));
+
+        const flight= await Flight.findByPk(flightId);
+        if(type=='dec'){
+            await flight.decrement('totalSeats',{by:seats})
+        }
+        else{
+            await flight.increment('totalSeats',{by:seats})
+        }
+        return flight;
     }
 }
 
